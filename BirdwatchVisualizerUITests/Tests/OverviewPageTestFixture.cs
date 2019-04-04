@@ -8,7 +8,10 @@ namespace BirdwatchVisualizerUITests.Tests
     [TestFixture]
     class OverviewPageTestFixture : SeleniumTestFixtureBase
     {
-        public override void SetUp() { }
+        public override void SetUp()
+        {
+            base.SetUp();
+        }
 
         public override void TearDown()
         {
@@ -42,9 +45,9 @@ namespace BirdwatchVisualizerUITests.Tests
             Initialize(browser);
 
             WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
-            var statCardContainer = WebDriver.FindElements(OverviewPageObject.StatisticsCardContainer);
+            var statCardContainer = WebDriver.FindElement(OverviewPageObject.StatisticsCardContainer);
 
-            Assert.IsTrue(statCardContainer[0].Text.ToLower().Contains("years worth of data"));
+            Assert.IsTrue(statCardContainer.Text.ToLower().Contains("years worth of data"));
         }
 
         [Test]
@@ -53,9 +56,9 @@ namespace BirdwatchVisualizerUITests.Tests
             Initialize(browser);
 
             WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
-            var statCardContainer = WebDriver.FindElements(OverviewPageObject.StatisticsCardContainer);
+            var statCardContainer = WebDriver.FindElement(OverviewPageObject.StatisticsCardContainer);
             
-            Assert.IsTrue(statCardContainer[0].Text.ToLower().Contains("total species"));
+            Assert.IsTrue(statCardContainer.Text.ToLower().Contains("total species"));
         }
 
         [Test]
@@ -64,9 +67,9 @@ namespace BirdwatchVisualizerUITests.Tests
             Initialize(browser);
 
             WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
-            var statCardContainer = WebDriver.FindElements(OverviewPageObject.StatisticsCardContainer);
+            var statCardContainer = WebDriver.FindElement(OverviewPageObject.StatisticsCardContainer);
 
-            Assert.IsTrue(statCardContainer[0].Text.ToLower().Contains("most birds recorded"));
+            Assert.IsTrue(statCardContainer.Text.ToLower().Contains("most birds recorded"));
         }
 
         [Test]
@@ -75,9 +78,9 @@ namespace BirdwatchVisualizerUITests.Tests
             Initialize(browser);
 
             WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
-            var statCardContainer = WebDriver.FindElements(OverviewPageObject.StatisticsCardContainer);
+            var statCardContainer = WebDriver.FindElement(OverviewPageObject.StatisticsCardContainer);
 
-            Assert.IsTrue(statCardContainer[0].Text.ToLower().Contains("most species recorded"));
+            Assert.IsTrue(statCardContainer.Text.ToLower().Contains("most species recorded"));
         }
 
         [Test]
@@ -86,9 +89,9 @@ namespace BirdwatchVisualizerUITests.Tests
             Initialize(browser);
 
             WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
-            var statCardContainer = WebDriver.FindElements(OverviewPageObject.StatisticsCardContainer);
+            var statCardContainer = WebDriver.FindElement(OverviewPageObject.StatisticsCardContainer);
 
-            Assert.IsTrue(statCardContainer[0].Text.ToLower().Contains("most common bird"));
+            Assert.IsTrue(statCardContainer.Text.ToLower().Contains("most common bird"));
         }
 
         [Test]
@@ -97,10 +100,10 @@ namespace BirdwatchVisualizerUITests.Tests
             Initialize(browser);
 
             WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
-            var statCardContainer = WebDriver.FindElements(OverviewPageObject.StatisticsCardContainer);
+            var statCardContainer = WebDriver.FindElement(OverviewPageObject.StatisticsCardContainer);
 
-            Assert.IsTrue(statCardContainer[0].Text.ToLower().Contains("decrease since 1st")
-                        || statCardContainer[0].Text.ToLower().Contains("increase since 1st"));
+            Assert.IsTrue(statCardContainer.Text.ToLower().Contains("decrease since 1st")
+                        || statCardContainer.Text.ToLower().Contains("increase since 1st"));
         }
     }
 }
