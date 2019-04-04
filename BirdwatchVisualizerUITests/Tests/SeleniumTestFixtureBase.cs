@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using System;
@@ -22,12 +23,8 @@ namespace BirdwatchVisualizerUITests.Tests
                 case BrowserTypes.Chrome:
                     WebDriver = new FirefoxDriver(@"D:\Tools\Selenium\FirefoxDriver\geckodriver-v0.24.0-win64");
                     break;
-                case BrowserTypes.IE:
-                    var options = new InternetExplorerOptions
-                    {
-                        IgnoreZoomLevel = true
-                    };
-                    WebDriver = new InternetExplorerDriver(@"D:\Tools\Selenium\IEDriver\IEDriverServer_x64_3.14.0", options);
+                case BrowserTypes.Edge:
+                    WebDriver = new EdgeDriver(@"D:\Tools\Selenium\EdgeDriver");
                     break;
                 default:
                     throw new NotSupportedException("Browser not supported.");

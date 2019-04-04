@@ -1,5 +1,7 @@
 ﻿using BirdwatchVisualizerUITests.Attributes;
+using BirdwatchVisualizerUITests.PageObjects;
 using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace BirdwatchVisualizerUITests.Tests
 {
@@ -14,13 +16,91 @@ namespace BirdwatchVisualizerUITests.Tests
         }
 
         [Test]
-        public void NavigateToHomePage([BrowserList] BrowserTypes browser)
+        public void WhenOverviewPageLoads_PageTitleIsCorrect([BrowserList] BrowserTypes browser)
         {
             Initialize(browser);
 
-            WebDriver.Navigate().GoToUrl("http://localhost:4200");
+            WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
 
             Assert.AreEqual(WebDriver.Title, "Birdwatch-Visualizer");
+        }
+
+        [Test]
+        public void WhenOverviewPageLoads_AllStatTilesAreRendered([BrowserList] BrowserTypes browser)
+        {
+            Initialize(browser);
+
+            WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
+            var statCardElements = WebDriver.FindElements(OverviewPageObject.StatisticsCards);
+
+            Assert.AreEqual(statCardElements.Count, 6);
+        }
+
+        [Test]
+        public void WhenOverviewPageLoads_YearCountStatExists([BrowserList] BrowserTypes browser)
+        {
+            Initialize(browser);
+
+            WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
+            var statCardContainer = WebDriver.FindElements(OverviewPageObject.StatisticsCardContainer);
+
+            Assert.IsTrue(statCardContainer[0].Text.ToLower().Contains("years worth of data"));
+        }
+
+        [Test]
+        public void WhenOverviewPageLoads_TotalSpeciesStatExists([BrowserList] BrowserTypes browser)
+        {
+            Initialize(browser);
+
+            WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
+            var statCardContainer = WebDriver.FindElements(OverviewPageObject.StatisticsCardContainer);
+            
+            Assert.IsTrue(statCardContainer[0].Text.ToLower().Contains("total species"));
+        }
+
+        [Test]
+        public void WhenOverviewPageLoads_TopBirdsRecordedStatExists([BrowserList] BrowserTypes browser)
+        {
+            Initialize(browser);
+
+            WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
+            var statCardContainer = WebDriver.FindElements(OverviewPageObject.StatisticsCardContainer);
+
+            Assert.IsTrue(statCardContainer[0].Text.ToLower().Contains("most birds recorded"));
+        }
+
+        [Test]
+        public void WhenOverviewPageLoads_TopSpeciesStatExists([BrowserList] BrowserTypes browser)
+        {
+            Initialize(browser);
+
+            WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
+            var statCardContainer = WebDriver.FindElements(OverviewPageObject.StatisticsCardContainer);
+
+            Assert.IsTrue(statCardContainer[0].Text.ToLower().Contains("most species recorded"));
+        }
+
+        [Test]
+        public void WhenOverviewPageLoads_MostCommonBirdStatExists([BrowserList] BrowserTypes browser)
+        {
+            Initialize(browser);
+
+            WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
+            var statCardContainer = WebDriver.FindElements(OverviewPageObject.StatisticsCardContainer);
+
+            Assert.IsTrue(statCardContainer[0].Text.ToLower().Contains("most common bird"));
+        }
+
+        [Test]
+        public void WhenOverviewPageLoads_BirdCountDifferenceStatExists([BrowserList] BrowserTypes browser)
+        {
+            Initialize(browser);
+
+            WebDriver.Navigate().GoToUrl(OverviewPageObject.URL);
+            var statCardContainer = WebDriver.FindElements(OverviewPageObject.StatisticsCardContainer);
+
+            Assert.IsTrue(statCardContainer[0].Text.ToLower().Contains("decrease since 1st")
+                        || statCardContainer[0].Text.ToLower().Contains("increase since 1st"));
         }
     }
 }

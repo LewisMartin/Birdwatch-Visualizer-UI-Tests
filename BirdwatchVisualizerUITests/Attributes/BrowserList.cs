@@ -7,6 +7,7 @@ namespace BirdwatchVisualizerUITests.Attributes
     {
         Firefox,
         Chrome,
+        Edge,
         IE
     }
 
@@ -22,7 +23,7 @@ namespace BirdwatchVisualizerUITests.Attributes
             {
                 BrowserTypes.Chrome,
                 BrowserTypes.Firefox,
-                BrowserTypes.IE
+                BrowserTypes.Edge
             };
         }
     }
