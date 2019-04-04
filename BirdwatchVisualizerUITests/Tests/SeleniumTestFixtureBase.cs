@@ -17,10 +17,10 @@ namespace BirdwatchVisualizerUITests.Tests
         {
             switch (browser)
             {
-                case BrowserTypes.Firefox:
+                case BrowserTypes.Chrome:
                     WebDriver = new ChromeDriver(@"D:\Tools\Selenium\ChromeDriver\chromedriver_win32\");
                     break;
-                case BrowserTypes.Chrome:
+                case BrowserTypes.Firefox:
                     WebDriver = new FirefoxDriver(@"D:\Tools\Selenium\FirefoxDriver\geckodriver-v0.24.0-win64");
                     break;
                 case BrowserTypes.Edge:
