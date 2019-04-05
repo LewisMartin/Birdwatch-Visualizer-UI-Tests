@@ -49,7 +49,6 @@ namespace BirdwatchVisualizerUITests.Tests
             Initialize(browser);
 
             WebDriver.Navigate().GoToUrl(BreakdownPageObject.URL);
-            var controlBar = WebDriver.FindElement(BreakdownPageObject.ChartContainer);
             var chartCanvas = WebDriver.FindElement(By.TagName("canvas"));
 
             Assert.IsNotNull(chartCanvas);
